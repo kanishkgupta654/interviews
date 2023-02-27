@@ -1,5 +1,7 @@
 public with sharing class QuoteDto extends BaseDto {
   public Date endDate;
+  public Date startDate;
+  public String Name;
 
   public QuoteDto() {
   }
@@ -7,6 +9,9 @@ public with sharing class QuoteDto extends BaseDto {
   public QuoteDto(Quote__c quote) {
     super(quote);
     this.endDate = quote.EndDate__c;
+    this.startDate = quote.Start_Date__c;
+    this.Name = quote.Name;
+
   }
 
   public override SObject refreshSo() {
