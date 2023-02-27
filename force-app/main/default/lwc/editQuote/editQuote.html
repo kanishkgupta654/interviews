@@ -1,4 +1,4 @@
-<!-- Edit Quote -->
+<!-- Edit Quote  -->
 <template>
   <h3 class="slds-page-header__title">Welcome to quote {quoteData.name}!</h3>
   Quote Project Ends On:
@@ -6,4 +6,16 @@
     value={quoteData.endDate}
     time-zone="UTC"
   ></lightning-formatted-date-time>
+
+      <template if:true = {quotes}>
+        <template for:each={quotes.data} for:item="quote">
+          <lightning-output-field label="Name" key={quote.Id} value={quote.Name}></lightning-output-field>
+         <lightning-input-field label="Start Date" key={quote.Id} onchange={handlestartDateChange} value={quote.Start_Date__c} class="slds-m-bottom_x-small"></lightning-input-field>
+         <lightning-input-field label="End Date" key={quote.Id} onchange={handleEnddateChange} value={quote.EndDate__c} class="slds-m-bottom_x-small"></lightning-input-field>
+          </template>
+         
+         <lightning-button label="Save" variant="brand" onclick={saveQuote}></lightning-button>
+      </template>
+     </div>
+  </lightning-card>
 </template>
